@@ -16,5 +16,9 @@ public interface UsuarioDAO {
 	
 	void borrar(int idUsuario);
 	
-	List<Usuario> listarUsu (Usuario u);
+	Usuario listarUsu(Usuario u);
+	
+	void Editar(String login, String password, String nombre, String email, int tipo);
+	
+	Usuario obtenerPorId(int id);
 }

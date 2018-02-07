@@ -48,45 +48,46 @@ body {background-color: #e3f2fd;}
 			response.sendRedirect("../index.jsp?mensaje=Inicie sesion");
 		} else {
 			UsuarioDAO uDAO = new UsuarioDAOImpleHibernate();
-			List<Usuario> usuarios = uDAO.listarUsu((Usuario) session.getAttribute("usuLogeado")); %>
+			Usuario usuarios = uDAO.obtenerPorId(Integer.parseInt(request.getParameter("idUsuario"))); %>
 		
-		<br/>
-		<br/>
-		<br/>
-		<br/>
 		
-		<%
-			for (Usuario u : usuarios) {
-		%>
+
+		<br/>
+		<br/>
+		<br/>
+		<br/>
 
 		<div class="row">
 			<div class="col-md-5 col-md-offset-3">
 				<div class="form-area">
-					<form action="../EditarUsuario" method="post" role="form"
+					<form action="../EditarUsuarioo" method="post" role="form"
 						enctype="multipart/form-data">
 						<h3>Editar Usuario</h3>
-						<%-- <input type="hidden" name="uuid" id="uuid" value="<%=p.getUuid()%>"> --%>
+						<input type="hidden" name="idUsuario" id="idUsuario" value="<%=usuarios.getIdUsuario()%>">
 						<div class="form-group">
 							<label for="login">Login</label> <input type="text"
 								name="login" id="login" class="form-control"
-								value="<%=u.getLogin()%>">
+								value="<%=usuarios.getLogin()%>">
 						</div>
 						<div class="form-group">
-							<label for="password">Password</label> <input type="text" name="password"
-								id="password" class="form-control" value="<%=u.getPassword()%>">
+							<label for="password">Password</label> <input type="password" name="password"
+								id="password" class="form-control" value="">
 						</div>
 						<div class="form-group">
 							<label for="nombre">Nombre</label> <input type="text" name="nombre"
-								id="nombre" class="form-control" value="<%=u.getNombre()%>">
+								id="nombre" class="form-control" value="<%=usuarios.getNombre()%>">
 						</div>
+						
 						<div class="form-group">
 							<label for="email">Email</label> <input type="text" name="email"
-								id="email" class="form-control" value="<%=u.getEmail()%>">
+								id="email" class="form-control" value="<%=usuarios.getEmail()%>">
 						</div>
+						
 						<div class="form-group">
-							<label for="tipo">Tipo</label> <input type="number" name="tipo"
-								id="tipo" class="form-control" value="<%=u.getTipo()%>">
+							<label for="tipo">Tipo</label> <input type="number" name="tipoo"
+								id="tipo" class="form-control" value="<%=usuarios.getTipo()%>">
 						</div>
+						
 						<div class="form-group">
 							<input type="submit" class="form-control btn btn-primary">
 						</div>
@@ -96,10 +97,6 @@ body {background-color: #e3f2fd;}
 		</div>
 
 
-		<%
-			}
-		%>
-		
 		<%
 			}
 		%>

@@ -82,6 +82,12 @@
   	<description></description>
   	<servlet-class>es.altair.controller.EditarUsuario</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>EditarUsuarioo</servlet-name>
+  	<display-name>EditarUsuarioo</display-name>
+  	<description></description>
+  	<servlet-class>es.altair.controller.EditarUsuarioo</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ValidarUsuario</servlet-name>
   	<url-pattern>/ValidarUsuario</url-pattern>
@@ -133,5 +139,9 @@
   <servlet-mapping>
   	<servlet-name>EditarUsuario</servlet-name>
   	<url-pattern>/EditarUsuario</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EditarUsuarioo</servlet-name>
+  	<url-pattern>/EditarUsuarioo</url-pattern>
   </servlet-mapping>
 </web-app>

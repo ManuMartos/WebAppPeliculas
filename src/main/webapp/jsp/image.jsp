@@ -1,9 +1,4 @@
-<%@page import="es.altair.dao.PeliculaDAO"%>
-<%@page import="java.io.OutputStream"%>
-<%@page import="es.altair.dao.PeliculaDAOImpleHibernate"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
-<%
+<%@page import="es.altair.dao.PeliculaDAO"%><%@page import="java.io.OutputStream"%><%@page import="es.altair.dao.PeliculaDAOImpleHibernate"%><%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%><%
 try {
 	String idLibro = request.getParameter("imag");
 	PeliculaDAO pDAO = new PeliculaDAOImpleHibernate();
@@ -18,8 +13,6 @@ try {
 			o.close();
 			return;
 		}
-	} catch (IllegalStateException e) {	
-	}
-} catch (Exception e) {	
-}
+} catch (IllegalStateException e) {}
+} catch (Exception e) {}
 %>

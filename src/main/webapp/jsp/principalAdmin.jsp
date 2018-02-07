@@ -105,11 +105,11 @@ body {background-color: #e3f2fd;}
 					<td><%=u.getEmail()%></td>
 					<td><%=u.getTipo()%></td>
 					<td>
-						<%-- <button type="button" class="btn btn-success"
+						<button type="button" class="btn btn-success"
 							onclick="location.href='editarUsuario.jsp?idUsuario=<%=u.getIdUsuario()%>'">
 							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 							Actualizar
-						</button> --%> <!-- Button trigger modal -->
+						</button> <!-- Button trigger modal -->
 						<button type="button" class="btn btn-danger" data-toggle="modal"
 							data-target="#borrarUsuario<%=u.getIdUsuario()%>">
 							<i class="fa fa-times" aria-hidden="true"></i> Borrar

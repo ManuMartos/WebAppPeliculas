@@ -130,17 +130,38 @@ public class UsuarioDAOImpleHibernate implements UsuarioDAO {
 		
 	}
 
-	public List<Usuario> listarUsu(Usuario u) {
+	public Usuario listarUsu(Usuario u) {
 		
-		String email = "";
+		int idUsuario = u.getIdUsuario();
 		
-		List<Usuario> usuarios = new ArrayList<Usuario>();
+		Usuario usuarios = null;
 
 		Session sesion = SessionProvider.getSession();
 		try {
 			sesion.beginTransaction();
 
-			usuarios = sesion.createQuery("FROM Usuario WHERE email").list();
+			usuarios = (Usuario)sesion.createQuery("FROM Usuario WHERE idUsuario=:clave").setParameter("clave", idUsuario).uniqueResult();
+
+			sesion.getTransaction().commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			sesion.close();
+			// sf.close();
+		}
+
+		return usuarios;
+	}
+	
+public Usuario obtenerPorId(int id) {
+				
+		Usuario usuarios = null;
+
+		Session sesion = SessionProvider.getSession();
+		try {
+			sesion.beginTransaction();
+
+			usuarios = (Usuario)sesion.createQuery("FROM Usuario WHERE idUsuario=:clave").setParameter("clave", id).uniqueResult();
 
 			sesion.getTransaction().commit();
 		} catch (Exception e) {
@@ -153,6 +174,30 @@ public class UsuarioDAOImpleHibernate implements UsuarioDAO {
 		return usuarios;
 	}
 
-	
+	public void Editar(String login, String password, String nombre, String email,
+            int tipo) {
+        
+        Session sesion = SessionProvider.getSession();
+        try {
+            sesion.beginTransaction();
 
+            sesion.createQuery("UPDATE Usuario SET login=:l, password=AES_ENCRYPT(:p, :passphrase), nombre=:n, email=:e, tipo=:t where idUsuario=:i " )
+            		.setParameter("l", login)
+            		.setParameter("p", password)
+            		.setParameter("passphrase", pass)
+            		.setParameter("n", nombre)
+            		.setParameter("e", email)
+            		.setParameter("t", tipo)/*
+            		.setParameter("i", idUsuario)*/
+            		.executeUpdate();
+
+            sesion.getTransaction().commit();
+        } catch (Exception e) {
+            // TODO: handle exception
+        } finally {
+            sesion.close();
+            // sf.close();
+        }
+
+    }
 }

@@ -62,6 +62,7 @@ body {background-color: #e3f2fd;}
 			Usuario u = (Usuario) session.getAttribute("usuLogeado");
 			if (session.getAttribute("usuLogeado") == null || session.isNew() || u.getTipo() != 0) {
 				response.sendRedirect("../index.jsp?mensaje=Inicie sesión");
+				return;
 			} else {
 				PeliculaDAO pDAO = new PeliculaDAOImpleHibernate();
 				List<Pelicula> peliculas = pDAO.listar((Usuario) session.getAttribute("usuLogeado"));
